@@ -132,3 +132,8 @@ allowRequestsPerSecond: 3
 # block height when poc2 validation starts
 # defaults to max uint64
 PoC2StartHeight: 9000000
+```
+
+## License
+
+http://www.binpress.com/license/view/l/12b7b8561178c86813ec5a1c67328a5f
