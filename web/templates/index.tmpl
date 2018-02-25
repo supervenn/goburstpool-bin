@@ -255,7 +255,7 @@
             <div class="alert alert-info text-center">
               targetDL = 720 * netDifficulty / yourPlotSize
             </div>
-            You can use the calculator no the left to determine this targetDL for you. After adjusting your targetDL <b>it will take {{ .Cfg.NAVG }} blocks for the effective capacity to converge</b>. So be patient. If you are interested in more information, you may want to visit the <a href="/info" target="_blank">info page</a>.
+            You can use the calculator no the right to determine this targetDL for you. After adjusting your targetDL <b>it will take {{ .Cfg.NAVG }} blocks for the effective capacity to converge</b>. So be patient. If you are interested in more information, you may want to visit the <a href="/info" target="_blank">info page</a>.
           </div>
         </div>
       </div>
@@ -392,8 +392,12 @@
       }
       if (minerInfo.deadline === undefined) {
         $('#miner-deadline').text('(none)');
-      } else {
-        $('#miner-deadline').text(minerInfo.deadline);
+      } else if (minerInfo.lastActiveBlockHeight !== undefined) {
+        if (minerInfo.lastActiveBlockHeight == currentBlock.height) {
+          $('#miner-deadline').text(minerInfo.deadline);
+        } else {
+          $('#miner-deadline').text('(none)');
+        }
       }
       if (minerInfo.lastActiveBlockHeight !== undefined) {
         $('#miner-last-active-block-height').text(minerInfo.lastActiveBlockHeight);
@@ -401,7 +405,7 @@
       if (minerInfo.historicalShare === undefined) {
         $('#miner-historical-share').text('0.000%');
       } else {
-        $('#miner-historical-share').text(minerInfo.historicalShare.toFixed(3) + '%');
+        $('#miner-historical-share').text((minerInfo.historicalShare * 100.0).toFixed(3) + '%');
       }
       if (minerInfo.nConf === undefined) {
         $('#miner-nconf').text(0);
