@@ -29,10 +29,10 @@ mysql -u<user> <dbname> < schema.sql
 
 4. Edit config (see config section for settings)
 
-5. run make
+5. start the pool
 
 ``` shellsession
-make
+./goburstpool
 ```
 
 ## Config
